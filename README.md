@@ -1,4 +1,7 @@
 # Spring Validation Check Sample
+
+---
+## Implemented
 - @StringValid
 - @MovieCategoryValid
 ---
