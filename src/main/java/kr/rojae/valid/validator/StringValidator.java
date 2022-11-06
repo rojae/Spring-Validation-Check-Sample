@@ -1,7 +1,5 @@
 package kr.rojae.valid.validator;
 
-import kr.rojae.valid.enums.MovieCategory;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
