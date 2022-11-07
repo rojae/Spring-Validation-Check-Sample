@@ -1,5 +1,8 @@
 
 # Spring Validation Check Sample
+---
+## Blog
+- https://github.com/rojae/Spring-Validation-Check-Sample/tree/v2
 
 ---
 ## Implemented
