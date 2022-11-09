@@ -12,6 +12,7 @@ public class AccountAddRequest {
 
     @EmailValid
     private String email;
+
     // only Korean, English
     private String name;
     // format yyyy.mm.dd
