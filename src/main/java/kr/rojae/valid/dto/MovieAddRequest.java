@@ -1,7 +1,7 @@
 package kr.rojae.valid.dto;
 
 import kr.rojae.valid.validator.MovieCategoryValid;
-import kr.rojae.valid.validator.StringValid;
+import kr.rojae.valid.validator.common.StringValid;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
