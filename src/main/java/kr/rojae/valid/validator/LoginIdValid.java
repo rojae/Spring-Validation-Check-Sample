@@ -1,6 +1,6 @@
 package kr.rojae.valid.validator;
 
-import kr.rojae.valid.validator.common.OnlyDigitWithAlphabetValid;
+import kr.rojae.valid.validator.common.OnlyNumericWithAlphabetValid;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Constraint;
@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Length(min = 8, max = 15, message = "loginId는 8자 이상, 15자 이하로 가능합니다.")
 @NotBlank(message = "loginId는 빈 공간을 가질 수 없습니다.")
-@OnlyDigitWithAlphabetValid(message = "loginId는 숫자와 영어로만 이루어집니다.")
+@OnlyNumericWithAlphabetValid(message = "loginId는 숫자와 영어로만 이루어집니다.")
 @Constraint(validatedBy = {})
 public @interface LoginIdValid {
     String message() default "";

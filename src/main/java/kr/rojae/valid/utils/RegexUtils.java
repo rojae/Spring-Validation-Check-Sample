@@ -6,7 +6,7 @@ public class RegexUtils {
         return str.matches ("[0-9|a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힝]*");
     }
 
-    public static boolean onlyNumberWithEnglish(String str){
+    public static boolean onlyNumericWithAlphabet(String str){
         return str.matches("^[a-zA-Z0-9]*");
     }
 
