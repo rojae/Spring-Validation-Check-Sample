@@ -1,6 +1,6 @@
 package kr.rojae.valid.validator;
 
-import kr.rojae.valid.validator.common.NoSpecialValid;
+import kr.rojae.valid.validator.common.match.NoSpecialValid;
 
 import javax.validation.Constraint;
 import javax.validation.constraints.NotBlank;

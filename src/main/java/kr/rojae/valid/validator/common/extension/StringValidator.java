@@ -1,4 +1,4 @@
-package kr.rojae.valid.validator.common;
+package kr.rojae.valid.validator.common.extension;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

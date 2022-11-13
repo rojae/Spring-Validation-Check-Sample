@@ -2,29 +2,38 @@ package kr.rojae.valid.dto;
 
 import kr.rojae.valid.validator.EmailValid;
 import kr.rojae.valid.validator.LoginIdValid;
+import kr.rojae.valid.validator.common.format.*;
+import kr.rojae.valid.validator.common.match.OnlyKoreanValid;
+import kr.rojae.valid.validator.common.match.OnlyNumericValid;
 import lombok.Data;
 
 
 @Data
 public class AccountAddRequest {
-    @LoginIdValid
+    @LoginIdValid(message = "loginId이 사용 불가능한 값입니다")
     private String loginId;
 
-    @EmailValid
+    @EmailValid(message = "email이 사용 불가능한 값입니다")
     private String email;
 
-    // only Korean, English
+    @OnlyKoreanValid(message = "name은 한글만 입력이 가능합니다")
     private String name;
-    // format yyyy.mm.dd
+
+    @IsDateValid(message = "birthDate는 날짜 형식만 가능합니다 (yyyy.mm.dd)")
     private String birthDate;
-    // only number
+
+    @OnlyNumericValid(message = "age는 숫자만 입력이 가능합니다")
     private String age;
-    // url
+
+    @IsUrlPathValid(message = "profileUrl은 URL 형식만 가능합니다")
     private String profileUrl;
-    // String Y, N
+
+    @IsYnValid(message = "isEnable이 유효한 값이 아닙니다. (Y, N)")
     private String isEnable;
-    // ip format
+
+    @IsIpValid(message = "clientIp는 IP 형식만 가능합니다")
     private String clientIp;
-    // uuid format
+
+    @IsUuidValid(message = "reqId은 UUID 형식만 가능합니다")
     private String reqId;
 }
