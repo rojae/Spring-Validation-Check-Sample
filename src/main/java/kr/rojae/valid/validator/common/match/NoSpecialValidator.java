@@ -1,4 +1,4 @@
-package kr.rojae.valid.validator.common;
+package kr.rojae.valid.validator.common.match;
 
 import kr.rojae.valid.utils.RegexUtils;
 

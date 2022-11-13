@@ -1,4 +1,4 @@
-package kr.rojae.valid.validator.common;
+package kr.rojae.valid.validator.common.match;
 
 import javax.validation.Constraint;
 import java.lang.annotation.Retention;
