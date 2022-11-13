@@ -2,26 +2,63 @@
 # Spring Validation Check Sample
 ---
 ## Blog
-- https://github.com/rojae/Spring-Validation-Check-Sample/tree/v2
-
+- not yet
 ---
 ## Implemented
-- @StringValid
+- extension
+  - @StringValid
+- format
+  - @IsDateValid
+  - @IsIpValid
+  - @IsUrlValid
+  - @IsUrlPathValid
+  - @IsUuidValid
+  - @IsYnValid
+- match
+  - @NoSpecialValid
+  - @OnlyAlphabetValid
+  - @OnlyUpperValid
+  - @OnlyDownerValid
+  - @OnlyKoreanValid
+  - @OnlyNumericValid
+  - @OnlyNumericWithAlphabetValid
+- @EmailValid
+- @LoginIdValid
 - @MovieCategoryValid
 ---
 
 ## Usage
 ```java
-public class MovieAddRequest {
-    @NotBlank(message = "MovieAddRequest.name은 빈 값일 수 없습니다")
+@Data
+public class AccountAddRequest {
+    @LoginIdValid(message = "loginId이 사용 불가능한 값입니다")
+    private String loginId;
+
+    @EmailValid(message = "email이 사용 불가능한 값입니다")
+    private String email;
+
+    @OnlyKoreanValid(message = "name은 한글만 입력이 가능합니다")
     private String name;
 
-    @MovieCategoryValid(message = "MovieAddRequest.category이 유효한 값이 아닙니다")
-    private String category;
+    @IsDateValid(message = "birthDate는 날짜 형식만 가능합니다 (yyyy.mm.dd)")
+    private String birthDate;
 
-    @StringValid(acceptedList = {"Y", "N"}, message = "MovieAddRequest.useYn이 유효한 값이 아닙니다")
-    private String useYn;
+    @OnlyNumericValid(message = "age는 숫자만 입력이 가능합니다")
+    private String age;
+
+    @IsUrlPathValid(message = "profileUrl은 URL 형식만 가능합니다")
+    private String profileUrl;
+
+    @IsYnValid(message = "isEnable이 유효한 값이 아닙니다. (Y, N)")
+    private String isEnable;
+
+    @IsIpValid(message = "clientIp는 IP 형식만 가능합니다")
+    private String clientIp;
+
+    @IsUuidValid(message = "reqId은 UUID 형식만 가능합니다")
+    private String reqId;
 }
+
 ```
 ---
 
@@ -29,16 +66,22 @@ public class MovieAddRequest {
 - Request
 ```json
 {
-  "name": "",
-  "category": "??",
-  "useYn": "?"
+  "loginId": "testid123",
+  "email": "test@gmail.com",
+  "name": "김철수",
+  "birthDate": "2001.10.30",
+  "age": "25",
+  "profileUrl": "ns-profile.company.com/image/2f48f241-9d64-4d16-bf56-70b9d4e0e79a.jpg",
+  "isEnable": "N",
+  "clientIp": "203.133.203.103",
+  "reqId": "2f48f241-9d64-4d16-bf56-70b9d4e0e79a"
 }
 ```
 
 - Response
 ```json
 {
-  "message": "MovieAddRequest.category이 유효한 값이 아닙니다, MovieAddRequest.name은 빈 값일 수 없습니다, MovieAddRequest.useYn이 유효한 값이 아닙니다",
+  "message": "profileUrl은 URL 형식만 가능합니다",
   "response": ""
 }
 ```
