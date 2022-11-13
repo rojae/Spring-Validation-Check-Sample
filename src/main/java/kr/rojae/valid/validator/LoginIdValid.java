@@ -1,6 +1,6 @@
 package kr.rojae.valid.validator;
 
-import kr.rojae.valid.validator.common.OnlyNumericWithAlphabetValid;
+import kr.rojae.valid.validator.common.match.OnlyNumericWithAlphabetValid;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Constraint;
