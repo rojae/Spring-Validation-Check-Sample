@@ -23,7 +23,7 @@ public class RegexTest {
 
     @Test
     public void loginIdFormatTest(){
-        boolean res = RegexUtils.onlyNumericWithEnglish(loginId);
+        boolean res = RegexUtils.onlyNumericWithAlphabet(loginId);
         assert res;
     }
 
