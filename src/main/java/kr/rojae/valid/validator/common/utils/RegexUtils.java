@@ -1,4 +1,4 @@
-package kr.rojae.valid.utils;
+package kr.rojae.valid.validator.common.utils;
 
 public class RegexUtils {
 
