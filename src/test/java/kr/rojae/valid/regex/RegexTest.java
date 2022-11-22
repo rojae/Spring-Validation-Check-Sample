@@ -1,6 +1,6 @@
 package kr.rojae.valid.regex;
 
-import kr.rojae.valid.utils.RegexUtils;
+import kr.rojae.validator.common.utils.RegexUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
