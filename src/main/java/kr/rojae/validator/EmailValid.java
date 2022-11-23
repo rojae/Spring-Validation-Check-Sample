@@ -16,9 +16,8 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = EmailValidator.class)
 public @interface EmailValid {
     String[] acceptedRegexList() default {
-//        "\\w+@gmail.com",
-//        "\\w+@naver.com"
     };
+
     String key() default "VALIDATION_EMAIL_KEY";
 
     String message() default "허용되지 않는 이메일 주소입니다";

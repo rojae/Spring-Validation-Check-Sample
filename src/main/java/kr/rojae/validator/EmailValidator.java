@@ -23,10 +23,8 @@ public class EmailValidator implements ConstraintValidator<EmailValid, String> {
         List<ValidationRuleDto> rules = validationRuleRepository.getRuleList(constraintAnnotation.key());
 
         for(ValidationRuleDto dto : rules){
-//            System.out.println(dto);
             this.acceptedRegexList.add(dto.getRule());
         }
-//        this.acceptedRegexList.addAll(List.of(constraintAnnotation.acceptedRegexList()));
     }
 
     @Override
