@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ValidationRuleDto {
+public class ValidRuleDto {
     private String keys;
     private String subSeq;
     private String rule;

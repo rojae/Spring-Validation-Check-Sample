@@ -1,9 +1,10 @@
 package kr.rojae.repository;
 
-import kr.rojae.validator.ValidationRuleDto;
+import kr.rojae.validator.ValidRuleDto;
 
 import java.util.List;
 
 public interface ValidationRuleRepositorySupport {
-    List<ValidationRuleDto> getRuleList(String key);
+    List<ValidRuleDto> getRuleList(String key);
+    boolean isExistRule(String key);
 }

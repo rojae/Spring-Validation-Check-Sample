@@ -4,7 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.StringPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import kr.rojae.validator.ValidationRuleDto;
+import kr.rojae.validator.ValidRuleDto;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ public class ValidationRuleRepositorySupportImpl implements ValidationRuleReposi
     }
 
     @Override
-    public List<ValidationRuleDto> getRuleList(String key) {
+    public List<ValidRuleDto> getRuleList(String key) {
         return query.select(
-                Projections.constructor(ValidationRuleDto.class,
+                Projections.constructor(ValidRuleDto.class,
                         validationRule.keys,
                         validationRule.subSeq,
                         validationRule.rule
@@ -30,6 +30,15 @@ public class ValidationRuleRepositorySupportImpl implements ValidationRuleReposi
                 .where(this.eq(validationRule.keys, key))
                 .fetch();
     }
+
+    @Override
+    public boolean isExistRule(String key) {
+        return query.select(validationRule.keys)
+                .from(validationRule)
+                .where(this.eq(validationRule.keys, key))
+                .fetchFirst() != null;
+    }
+
 
     public BooleanExpression eq(StringPath path, String str){
         if(str == null)

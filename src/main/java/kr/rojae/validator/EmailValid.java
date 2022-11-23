@@ -18,7 +18,7 @@ public @interface EmailValid {
     String[] acceptedRegexList() default {
     };
 
-    String key() default "VALIDATION_EMAIL_KEY";
+    String key() default "validation.email.key";
 
     String message() default "허용되지 않는 이메일 주소입니다";
 
