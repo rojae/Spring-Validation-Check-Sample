@@ -1,5 +1,6 @@
 package kr.rojae.entity;
 
+import kr.rojae.validator.error.VaildFailCode;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -34,10 +35,10 @@ public class ValidationFailLog {
     public ValidationFailLog() {
     }
 
-    public ValidationFailLog(String keys, String type, String reason, String inputData){
+    public ValidationFailLog(String keys, VaildFailCode failCode, String inputData){
         this.keys = keys;
-        this.type = type;
-        this.reason = reason;
+        this.type = failCode.getType();
+        this.reason = failCode.getReason();
         this.inputData = inputData;
     }
 }

@@ -3,6 +3,7 @@ package kr.rojae.validator;
 import kr.rojae.entity.ValidationFailLog;
 import kr.rojae.repository.ValidationFailLogRepository;
 import kr.rojae.repository.ValidationRuleRepository;
+import kr.rojae.validator.error.VaildFailCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 
@@ -55,7 +56,7 @@ public class EmailValidator implements ConstraintValidator<EmailValid, String> {
         }
 
         // Validation Checking에 실패한 경우, DB에 저장하자.
-        validationFailLogRepository.save(new ValidationFailLog(dbKeyName, "API", "API Validation Check Failed", value));
+        validationFailLogRepository.save(new ValidationFailLog(dbKeyName, VaildFailCode.API_REFUSED, value));
         return false;
     }
 }
