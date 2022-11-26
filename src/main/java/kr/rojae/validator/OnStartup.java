@@ -1,5 +1,7 @@
 package kr.rojae.validator;
 
+import kr.rojae.entity.ValidationFailLog;
+import kr.rojae.repository.ValidationFailLogRepository;
 import kr.rojae.repository.ValidationRuleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -21,10 +23,12 @@ public class OnStartup {
     private final String keyPattern = "validation.*";
     private final Environment env;
     private final ValidationRuleRepository validationRuleRepository;
+    private final ValidationFailLogRepository validationFailLogRepository;
 
-    public OnStartup(Environment env, ValidationRuleRepository validationRuleRepository) {
+    public OnStartup(Environment env, ValidationRuleRepository validationRuleRepository, ValidationFailLogRepository validationFailLogRepository) {
         this.env = env;
         this.validationRuleRepository = validationRuleRepository;
+        this.validationFailLogRepository = validationFailLogRepository;
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -40,6 +44,8 @@ public class OnStartup {
         collect.forEach(key -> {
             if(!validationRuleRepository.isExistRule(env.getProperty(key))){
                 log.error(String.format("KEY : %s is not defined from database, Size is ZERO", env.getProperty(key)));
+                // On-Startup (기동 이후) Validation KEY의 데이터가 DB에 존재하는지 체크함
+                validationFailLogRepository.save(new ValidationFailLog(env.getProperty(key), "STARTUP", "Key is not defined from database", ""));
             }
         });
     }
