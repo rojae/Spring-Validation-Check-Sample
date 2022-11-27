@@ -2,7 +2,7 @@
 # Spring Validation Check Sample
 ---
 ## Blog
-- not yet
+- https://redcoder.tistory.com/321
 ---
 ## Implemented
 - extension
