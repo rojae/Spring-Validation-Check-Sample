@@ -26,7 +26,31 @@
 - @LoginIdValid
 - @MovieCategoryValid
 ---
+## With Database
+- Getting Validation Rule in DB
+```java
+// Table : VALIDATION_RULE
+List<ValidRuleDto> rules = validationRuleRepository.getRuleList(dbKeyName);
+```
+- Save Failed Validation Logging in DB
+```java
+// Table: VALIDATION_FAIL_LOG
+validationFailLogRepository.save(new ValidationFailLog(...));
+```
+- Easy to see validation's logging with rule
+```sql
+SELECT  A.SEQ as "순번", A.TYPE AS "검증실패타입", A.KEYS as "유효성키", A.INPUT_DATA as "입력값" , A.REASON as "사유",  B.RULES as "검증룰 전체", A.INS_DATE as "발생일자"
+FROM VALIDATION_FAIL_LOG A
+left join (
+    SELECT KEYS, GROUP_CONCAT(DISTINCT RULE SEPARATOR ', ') RULES 
+    FROM VALIDATION_RULE 
+    GROUP BY KEYS
+) B
+on A.KEYS = B.KEYS
+ORDER BY SEQ DESC;
+```
 
+---
 ## Usage
 ```java
 @Data
